@@ -14,13 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOPATH: ${{ github.workspace }}
-      GO111MODULE: on
+      GO111MODULE: auto
 
     steps:
     - uses: actions/setup-go@v2
       with:
         go-version: 1.19
       id: go
+
+    - name: test env
+        pwd
+        echo "test env -- ################## BEFORE BASH ######################"
+        bash
+        echo "test env -- ################## AFTER BASH ######################"
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -29,18 +35,30 @@ jobs:
 
     - name: Install dependencies 
       run: |
+        ls -l
+        pwd
+        echo "################## BEFORE BASH ######################"
+        bash
+        echo "################## AFTER BASH ######################"
         go install
 
         # Dependencies needed to generate the tile 
+        echo "################## sudo apt update && sudo apt get ######################"
         sudo apt update && sudo apt install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3
         
+        echo "################## curl bosh ######################"
         curl -O -L https://github.com/cloudfoundry/bosh-cli/releases/download/v6.2.0/bosh-cli-6.2.0-linux-amd64
+        echo "################## chmod bosh ######################"
         chmod +x ./bosh-cli-6.2.0-linux-amd64
         sudo mv ./bosh-cli-6.2.0-linux-amd64 /usr/local/bin/bosh
+        echo "################## bosh done ######################"
         
+        echo "################## curl tile ######################"
         curl -O -L https://github.com/cf-platform-eng/tile-generator/releases/download/v14.0.3/tile_linux-64bit
+        echo "################## chmod tile ######################"
         chmod +x tile_linux-64bit
         sudo mv tile_linux-64bit /usr/local/bin/tile
+        echo "################## tile done ######################"
 
     - name: Get version
       id: get_version
