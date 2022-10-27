@@ -30,7 +30,11 @@ jobs:
 
     - name: Install dependencies 
       run: |
-        echo "################## CURRENT DIRECTORY: $(pwd)"
+        echo "##################### CURRENT DIRECTORY: $(pwd)"
+        echo "##################### ${{ env.GOPATH }}"
+        echo "##################### ${{ github.repository }}"
+        echo "##################### full work path: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}"
+        echo "-------------------------------------------------------------------------"
         echo "################## repo dir: /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile"
         echo "################## listing files in repo dir"
         ls -l /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
