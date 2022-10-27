@@ -34,6 +34,7 @@ jobs:
         echo "##################### env.GOPATH: ${{ env.GOPATH }}"
         echo "##################### github.repository: ${{ github.repository }}"
         echo "##################### full work path: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}"
+        echo "##################### which go 1: $(which go)
         echo "-------------------------------------------------------------------------"
         echo "################## repo dir: /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile"
         echo "################## listing files in repo dir"
@@ -50,6 +51,10 @@ jobs:
 
 
         go install
+        
+        
+        echo "##################### which go 2: $(which go)
+
 
 
         # Dependencies needed to generate the tile 
