@@ -97,6 +97,8 @@ jobs:
 
     - name: Test and Build
       run: |
+        echo "################## CHANGING DIRECTORY TO REPO DIR ######################"
+        cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
         make release
 
     - name: Upload Tile
