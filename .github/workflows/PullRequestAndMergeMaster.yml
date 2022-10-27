@@ -31,10 +31,12 @@ jobs:
     - name: Install dependencies 
       run: |
         echo "################## CURRENT DIRECTORY: $(pwd)"
-        ls -l
-        echo "################## BEFORE BASH ######################"
-        bash
-        echo "################## AFTER BASH ######################"
+        echo "################## repo dir: /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile"
+        echo "################## listing files in repo dir"
+        ls -l /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
+        echo "################## BEFORE /BIN/BASH ######################"
+        /bin/bash
+        echo "################## AFTER /BIN/BASH ######################"
         go install
 
         # Dependencies needed to generate the tile 
