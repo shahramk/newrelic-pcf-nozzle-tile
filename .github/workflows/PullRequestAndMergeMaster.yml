@@ -38,12 +38,17 @@ jobs:
         echo "##################### which go 1: $(which go)
         echo "-------------------------------------------------------------------------"
         echo "################## repo dir: /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile"
-        echo "################## listing files in repo dir"
+        echo "################## listing files in repo dir 1"
         ls -l /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
+        echo "################## listing files in repo dir 2"
+        ls -l /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile/.git
         echo "################## ls bin "##################"
         ls bin
         echo "################## ls src "##################"
         ls src
+        echo "################## RUNNER ENV "##################"
+        env
+        echo "-------------------------------------------------------------------------"
         
         echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
