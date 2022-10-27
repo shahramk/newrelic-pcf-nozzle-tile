@@ -23,12 +23,6 @@ jobs:
         go-version: 1.19
       id: go
 
-    # - name: test env
-    #     pwd
-    #     echo "test env -- ################## BEFORE BASH ######################"
-    #     bash
-    #     echo "test env -- ################## AFTER BASH ######################"
-
     - name: Checkout code
       uses: actions/checkout@v2
       with:
