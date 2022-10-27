@@ -30,8 +30,8 @@ jobs:
 
     - name: Install dependencies 
       run: |
+        echo "################## CURRENT DIRECTORY: $(pwd)"
         ls -l
-        pwd
         echo "################## BEFORE BASH ######################"
         bash
         echo "################## AFTER BASH ######################"
