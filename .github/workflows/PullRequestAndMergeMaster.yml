@@ -48,6 +48,9 @@ jobs:
         echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
         ls -l go.*
+        echo "----------------   go env -----------------------------------------------"
+        go help environment
+        go env
         echo "-------------------------------------------------------------------------"
 
 
