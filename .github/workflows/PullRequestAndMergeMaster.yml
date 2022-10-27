@@ -14,7 +14,7 @@ jobs:
     name: Build And Test
     runs-on: ubuntu-latest
     env:
-      GOPATH: /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src
+      GOPATH: ${{ github.workspace }}
       GO111MODULE: auto
 
     steps:
