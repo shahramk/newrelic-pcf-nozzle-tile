@@ -68,6 +68,9 @@ jobs:
         
         echo "-------------------------------------------------------------------------"
         go install
+        sleep 2
+        ls -la /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/bin
+        
         
         
         echo "##################### which go 2: $(which go)
