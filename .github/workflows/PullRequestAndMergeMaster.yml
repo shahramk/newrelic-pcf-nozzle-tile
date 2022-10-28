@@ -31,78 +31,28 @@ jobs:
 
     - name: Install dependencies 
       run: |
-        echo "##################### CURRENT DIRECTORY: $(pwd)"
-        echo "##################### HOME DIRECTORY: $(HOME)"
-        echo "##################### env.GOPATH: ${{ env.GOPATH }}"
-        echo "##################### github.repository: ${{ github.repository }}"
-        echo "##################### full work path: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}"
-        echo "##################### which go 1: $(which go)
-        echo "-------------------------------------------------------------------------"
-        echo "################## repo dir: /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile"
-        echo "################## listing files in repo dir"
-        ls -l /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
-        echo "################## ls bin "##################"
-        ls bin
-        echo "################## ls src "##################"
-        ls src
-        
         echo "################## CHANGING DIRECTORY TO REPO "##################"
-        export GOBIN=${GOPATH}/bin
-        sleep 1
-        export PATH=${GOBIN}:${PATH}
-        sleep 1
         echo "########## PATH: ${PATH} "
-        sleep 1
-        
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
-        ls -l go.* Makefile
-        echo "----------------   cat Makefile -------------------
-        sleep 1
-        pwd
-        sleep 1
-        cat Makefile
-        sleep 1
         echo "################## ENV "##################"
-        sleep 1
-        pwd
-        sleep 1
-        echo " ----------------   env"
-        env
-        sleep 1
-        echo " ----------------   go env"
-        go env
-        sleep 1
-        echo " ----------------------------"
-        
+        env | sort
         echo "-------------------------------------------------------------------------"
+
         go install
-        sleep 2
-        ls -la /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/bin
-        echo " ---------------------------- find gobin"
-        find /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/bin
-        sleep 2
         
         
-        echo "##################### which go 2: $(which go)
         # Dependencies needed to generate the tile 
-        echo "################## sudo apt update + sudo apt get 1 ######################"
         sudo apt update && sudo apt install -y zlibc zlib1g-dev
-        echo "################## sudo apt update + sudo apt get 2 ######################"
-        sudo apt update && sudo apt install -y build-essential ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3
+        sudo apt install -y build-essential ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3
         
-        echo "################## curl bosh ######################"
         curl -O -L https://github.com/cloudfoundry/bosh-cli/releases/download/v6.2.0/bosh-cli-6.2.0-linux-amd64
-        echo "################## chmod bosh ######################"
         chmod +x ./bosh-cli-6.2.0-linux-amd64
         sudo mv ./bosh-cli-6.2.0-linux-amd64 /usr/local/bin/bosh
-        echo "################## bosh done ######################"
         
-        echo "################## curl tile ######################"
         curl -O -L https://github.com/cf-platform-eng/tile-generator/releases/download/v14.0.3/tile_linux-64bit
-        echo "################## chmod tile ######################"
         chmod +x tile_linux-64bit
         sudo mv tile_linux-64bit /usr/local/bin/tile
-        echo "################## tile done ######################"
+
     - name: Get version
       id: get_version
       if: github.event.action == 'published'
