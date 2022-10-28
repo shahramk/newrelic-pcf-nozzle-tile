@@ -337,7 +337,7 @@ ReadingFromInsights:
 	assert.Equal(t, eventReceivedCount[PCFHttpStartStop], eventSentCount[PCFHttpStartStop])
 	assert.Equal(t, eventReceivedCount[PCFCounterEvent], eventSentCount[PCFCounterEvent])
 
-	events := []string{PCFContainerMetric, PCFValueMetric}
+	events := []string{/* PCFContainerMetric, */ PCFValueMetric}
 	for _, e := range events {
 		assert.GreaterOrEqual(t, eventReceivedCount[e], eventSentCount[e])
 	}
