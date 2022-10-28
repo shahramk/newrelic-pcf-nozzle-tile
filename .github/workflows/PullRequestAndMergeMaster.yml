@@ -49,17 +49,18 @@ jobs:
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
         ls -l go.*
         echo "----------------   go env -----------------------------------------------"
-        go help environment
-        go env
+        ### go help environment
+        ### go env
         echo "-------------------------------------------------------------------------"
         go install
         
         
         echo "##################### which go 2: $(which go)
         # Dependencies needed to generate the tile 
-        echo "################## sudo apt update & sudo apt get ######################"
-        sudo apt update && sudo apt install -y build-essential ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3
+        echo "################## sudo apt update + sudo apt get 1 ######################"
         sudo apt update && sudo apt install -y zlibc zlib1g-dev
+        echo "################## sudo apt update + sudo apt get 2 ######################"
+        sudo apt update && sudo apt install -y build-essential ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3
         
         echo "################## curl bosh ######################"
         curl -O -L https://github.com/cloudfoundry/bosh-cli/releases/download/v6.2.0/bosh-cli-6.2.0-linux-amd64
