@@ -39,13 +39,13 @@ jobs:
         echo "-------------------------------------------------------------------------"
         echo "################## repo dir: /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile"
         echo "################## listing files in repo dir 1"
-        ls -l /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
-        echo "################## listing files in repo dir 2"
-        ls -l /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile/.git
+        ls -la /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
+        echo "################## listing files in repo dir 2 .../.git"
+        ls -la /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile/.git
         echo "################## ls bin "##################"
-        ls bin
+        ls -la bin
         echo "################## ls src "##################"
-        ls src
+        ls -la src
         echo "################## RUNNER ENV "##################"
         env
         echo "-------------------------------------------------------------------------"
@@ -57,7 +57,7 @@ jobs:
         echo "-----------------"
         echo "################## REMOVING go.* and RUNNING GO MOD INIT ######################"
         pwd
-        ls -l
+        ls -la
         echo "-----------------after ls"
         echo "----------------- rm -f go.???"
         pwd
