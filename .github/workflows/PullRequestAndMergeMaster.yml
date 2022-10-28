@@ -46,6 +46,13 @@ jobs:
         ls src
         
         echo "################## CHANGING DIRECTORY TO REPO "##################"
+        export GOBIN=${GOPATH}/bin
+        sleep 1
+        export PATH=${GOBIN}:${PATH}
+        sleep 1
+        echo "########## PATH: ${PATH} "
+        sleep 1
+        
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
         ls -l go.* Makefile
         echo "----------------   cat Makefile -------------------
