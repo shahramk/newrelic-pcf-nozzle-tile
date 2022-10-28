@@ -31,15 +31,21 @@ jobs:
 
     - name: Install dependencies 
       run: |
+        
         echo "########## PATH: ${PATH} "
+        
         echo "################## ENV "##################"
-        env | sort
+        env
         echo "-------------------------------------------------------------------------"
+        
         echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
+        
         echo "########## repo dir: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}"
+        
         echo "################## pwd -- RUN go install ###################"
         pwd
+        
         go install
         echo "-------------------------------------------------------------------------"
         
