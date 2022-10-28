@@ -47,8 +47,10 @@ jobs:
         
         echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
-        ls -l go.*
+        ls -l go.* Makefile
         echo "----------------   cat Makefile -------------------
+        sleep 1
+        pwd
         sleep 1
         cat Makefile
         sleep 1
