@@ -31,24 +31,8 @@ jobs:
 
     - name: Install dependencies 
       run: |
-        
-        echo "########## PATH: ${PATH} "
-        
-        echo "################## ENV "##################"
-        env
-        echo "-------------------------------------------------------------------------"
-        
-        echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
-        
-        echo "########## repo dir: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}"
-        
-        echo "################## pwd -- RUN go install ###################"
-        pwd
-        
-        go install
-        echo "-------------------------------------------------------------------------"
-        
+        go install        
         
         # Dependencies needed to generate the tile 
         sudo apt update && sudo apt install -y zlibc zlib1g-dev
@@ -72,9 +56,6 @@ jobs:
         echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
         echo "::set-output name=VERSION::${RELEASE_TAG}"
     
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-    
     - name: Test and Build
       run: |
         pwd
@@ -95,6 +76,9 @@ jobs:
         asset_name: nr-firehose-nozzle-${{ steps.get_version.outputs.VERSION }}.pivotal
         asset_content_type: Tile
 
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+    
     - name: Upload Tarball
       if: github.event.action == 'published'
       uses: actions/upload-release-asset@v1.0.2
