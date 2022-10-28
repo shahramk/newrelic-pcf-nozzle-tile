@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOPATH: ${{ github.workspace }}
+      GOBIN: ${{ github.workspace }}/bin
       GO111MODULE: auto
 
     steps:
