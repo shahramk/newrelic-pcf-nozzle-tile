@@ -18,7 +18,7 @@ clean:
 
 deps:
 	@echo "=== $(INTEGRATION) === [ deps ]: downloading dependencies..."
-	@go.mod init
+	@go mod init
 	@go mod tidy
 
 test-deps:
