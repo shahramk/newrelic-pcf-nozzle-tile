@@ -52,6 +52,7 @@ jobs:
         
         echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
+        cd /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
         pwd
         echo "-----------------"
         echo "################## REMOVING go.* and RUNNING GO MOD INIT ######################"
