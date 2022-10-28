@@ -22,6 +22,7 @@ deps:
 
 test-deps:
 	@echo "=== $(INTEGRATION) === [ test-deps ]: installing testing dependencies..."
+	@go get $(TEST_DEPS)
 	@go get -v $(TEST_DEPS)
 
 test:
