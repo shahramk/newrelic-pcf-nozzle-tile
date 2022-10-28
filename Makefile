@@ -14,10 +14,11 @@ build: clean deps test-deps compile test integration-test
 
 clean:
 	@echo "=== $(INTEGRATION) === [ clean ]: removing binaries and coverage file..."
-	@rm -rfv dist product release coverage.xml
+	@rm -rfv dist product release coverage.xml go.mod go.sum
 
 deps:
 	@echo "=== $(INTEGRATION) === [ deps ]: downloading dependencies..."
+	go.mod init
 	@go mod tidy
 
 test-deps:
