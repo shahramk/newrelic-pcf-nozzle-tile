@@ -54,7 +54,9 @@ jobs:
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
         echo "################## REMOVING go.* and RUNNING GO MOD INIT ######################"
         ls -l go.*
+        echo "-----------------after ls"
         rm -f go.???
+        echo "-----------------after rm - before init"
         go mod init
         echo "################## ls -l after go mod init ######################"
         ls -l go.*
@@ -104,6 +106,7 @@ jobs:
       run: |
         echo "################## CHANGING DIRECTORY TO REPO DIR ######################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
+        
         make release
 
     - name: Upload Tile
