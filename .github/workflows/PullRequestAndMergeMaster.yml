@@ -70,7 +70,9 @@ jobs:
         go install
         sleep 2
         ls -la /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/bin
-        
+        echo " ---------------------------- find gobin"
+        find /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/bin
+        sleep 2
         
         
         echo "##################### which go 2: $(which go)
