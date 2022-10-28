@@ -18,13 +18,13 @@ jobs:
       GO111MODULE: auto
 
     steps:
-    - uses: actions/setup-go@v3
+    - uses: actions/setup-go@v2
       with:
         go-version: 1.19
       id: go
 
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         path: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
 
@@ -38,51 +38,26 @@ jobs:
         echo "##################### which go 1: $(which go)
         echo "-------------------------------------------------------------------------"
         echo "################## repo dir: /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile"
-        echo "################## listing files in repo dir 1"
-        ls -la /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
-        echo "################## listing files in repo dir 2 .../.git"
-        ls -la /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile/.git
+        echo "################## listing files in repo dir"
+        ls -l /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
         echo "################## ls bin "##################"
-        ls -la bin
+        ls bin
         echo "################## ls src "##################"
-        ls -la src
-        echo "################## RUNNER ENV "##################"
-        env
-        echo "-------------------------------------------------------------------------"
+        ls src
         
         echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
-        cd /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
-        pwd
-        echo "-----------------"
-        echo "################## REMOVING go.* and RUNNING GO MOD INIT ######################"
-        pwd
-        ls -la
-        echo "-----------------after ls"
-        echo "----------------- rm -f go.???"
-        pwd
-        rm -f go.???
-        echo "-----------------after rm - before init"
-        pwd
-        go mod init
-        echo "################## ls -l after go mod init ######################"
-        pwd
         ls -l go.*
         echo "----------------   go env -----------------------------------------------"
         go help environment
         go env
         echo "-------------------------------------------------------------------------"
-
-
         go install
         
         
         echo "##################### which go 2: $(which go)
-
-
-
         # Dependencies needed to generate the tile 
-        echo "################## sudo apt update && sudo apt get ######################"
+        echo "################## sudo apt update & sudo apt get ######################"
         sudo apt update && sudo apt install -y build-essential ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3
         sudo apt update && sudo apt install -y zlibc zlib1g-dev
         
@@ -99,7 +74,6 @@ jobs:
         chmod +x tile_linux-64bit
         sudo mv tile_linux-64bit /usr/local/bin/tile
         echo "################## tile done ######################"
-
     - name: Get version
       id: get_version
       if: github.event.action == 'published'
@@ -109,14 +83,9 @@ jobs:
         RELEASE_TAG=${TAG//v}
         echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
         echo "::set-output name=VERSION::${RELEASE_TAG}"
-
     - name: Test and Build
       run: |
-        echo "################## CHANGING DIRECTORY TO REPO DIR ######################"
-        cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
-        
         make release
-
     - name: Upload Tile
       if: github.event.action == 'published'
       uses: actions/upload-release-asset@v1.0.2
