@@ -52,13 +52,20 @@ jobs:
         
         echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
+        pwd
+        echo "-----------------"
         echo "################## REMOVING go.* and RUNNING GO MOD INIT ######################"
+        pwd
         ls -l
         echo "-----------------after ls"
+        echo "----------------- rm -f go.???"
+        pwd
         rm -f go.???
         echo "-----------------after rm - before init"
+        pwd
         go mod init
         echo "################## ls -l after go mod init ######################"
+        pwd
         ls -l go.*
         echo "----------------   go env -----------------------------------------------"
         go help environment
