@@ -111,6 +111,10 @@ jobs:
         RELEASE_TAG=${TAG//v}
         echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
         echo "::set-output name=VERSION::${RELEASE_TAG}"
+    
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+    
     - name: Test and Build
       run: |
         pwd
