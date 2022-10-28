@@ -48,6 +48,8 @@ jobs:
         echo "################## CHANGING DIRECTORY TO REPO "##################"
         cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
         ls -l go.*
+        echo "----------------   cat Makefile -------------------
+        cat Makefile
         echo "----------------   go env -----------------------------------------------"
         ### go help environment
         ### go env
@@ -86,6 +88,12 @@ jobs:
         echo "::set-output name=VERSION::${RELEASE_TAG}"
     - name: Test and Build
       run: |
+        pwd
+        sleep 1
+        cd /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
+        sleep 1
+        pwd
+        sleep 1
         make release
     - name: Upload Tile
       if: github.event.action == 'published'
