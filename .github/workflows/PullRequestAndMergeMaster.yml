@@ -36,7 +36,8 @@ jobs:
         env | sort
         echo "-------------------------------------------------------------------------"
         echo "################## CHANGING DIRECTORY TO REPO "##################"
-        echo "repo dir: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}"
+        cd ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
+        echo "########## repo dir: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}"
         echo "################## pwd -- RUN go install ###################"
         pwd
         go install
