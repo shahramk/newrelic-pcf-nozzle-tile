@@ -54,7 +54,8 @@ jobs:
         # Remove 'v' from tag name
         RELEASE_TAG=${TAG//v}
         echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
-        echo "::set-output name=VERSION::${RELEASE_TAG}"
+        # echo "::set-output name=VERSION::${RELEASE_TAG}"
+        echo "VERSION=${RELEASE_TAG}" >> $GITHUB_OUTPUT
     
     - name: Test and Build
       run: |
