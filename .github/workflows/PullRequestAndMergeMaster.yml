@@ -59,13 +59,11 @@ jobs:
     
     - name: Test and Build
       run: |
-        pwd
-        sleep 1
+        echo "######### VERSION = ${{ steps.get_version.outputs.VERSION }}---"
         cd /home/runner/work/newrelic-pcf-nozzle-tile/newrelic-pcf-nozzle-tile/src/github.com/shahramk/newrelic-pcf-nozzle-tile
-        sleep 1
-        pwd
-        sleep 1
+        
         make release
+
     - name: Upload Tile
       # if: github.event.action == 'published'
       uses: actions/upload-release-asset@v1.0.2
